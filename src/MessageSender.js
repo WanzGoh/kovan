@@ -23,10 +23,10 @@ function MessageSender() {
 				<form>
 					<input value={input} 
 					onChange={(e)=> setInput(e.target.value)} 
-					className="MessageSender__input" placeholder={"오늘은 어떠신가요?"} />
+					className="MessageSender__input" placeholder={"How are you today?"} />
 					<input value={imageUrl}
 					onChange={(e)=> setImageUrl(e.target.value)} 
-					placeholder="image URL (옵션)" />
+					placeholder="image URL (Optional)" />
 					<button onClick={ handleSubmit } type="submit">
 						hidden Submit</button>
 						</form>
@@ -35,7 +35,7 @@ function MessageSender() {
 			<div className="MessageSender__bottom">
 				<div className="MessageSender__option">
 				<VideocamIcon style={{color: "red"}} />
-				<h3>실시간 비디오</h3>
+				<h3>Live</h3>
 				</div>
 				<div className="MessageSender__option">
 				<PhotoLibraryIcon style={{color: "green"}} />
