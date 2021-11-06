@@ -17,6 +17,7 @@ function Feed() {
 		<div className="Feed">
 			<StoryReel />
 			<MessageSender />
+
 			
 			{posts.map((post) =>(
 				<Post 
@@ -28,6 +29,7 @@ function Feed() {
           			image={post.data.image} 
 				  />
 			))}
+			
 		</div>
 	)
 }

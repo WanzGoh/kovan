@@ -25,7 +25,7 @@ function Header() {
 					<img src={ImageLogo} alt="logo" />
 					<div className="Header__input">
 						<SearchIcon />
-						<input placeholder="검색하기" type="text" />
+						<input placeholder="Search" type="text" />
 					</div>
 				</div>
 				<div className="Header__mid">
@@ -59,6 +59,7 @@ function Header() {
 						<Avatar src={user.photoURL}/>
 						<h4>
 							{user.displayName}
+
 						</h4>
 					</div>
 					<IconButton>

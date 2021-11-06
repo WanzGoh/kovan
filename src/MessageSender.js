@@ -37,11 +37,11 @@ function MessageSender() {
 					<input 
 					value={input} 
 					onChange={(e)=> setInput(e.target.value)} 
-					className="MessageSender__input" placeholder={`오늘은 어떠신가요? ${user.displayName}님`} />
+					className="MessageSender__input" placeholder={`What's up? ${user.displayName}`} />
 					<input 
 					value={imageUrl}
 					onChange={(e)=> setImageUrl(e.target.value)} 
-					placeholder="image URL (옵션)" />
+					placeholder="image URL (Optional)" />
 					<button onClick={ handleSubmit } type="submit">
 						hidden Submit</button>
 						</form>
