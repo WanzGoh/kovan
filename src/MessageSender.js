@@ -4,8 +4,11 @@ import "./styles/MessageSender.css";
 import VideocamIcon from "@material-ui/icons/Videocam";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-
+import {useStateValue} from "./StateProvider" 
+import db from './firebase';
+import firebase from "firebase/compat/app";
 function MessageSender() {
+	const [{ user }, dispatch] = useStateValue();
 	const [input, setInput] = useState('');
 	const [imageUrl, setImageUrl] = useState('');
 
@@ -13,18 +16,30 @@ function MessageSender() {
 	const handleSubmit = e =>{
 		e.preventDefault();
 
+		db.collection("posts").add({
+			message: input,
+			timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+			profilePic: user.photoURL,
+			username: user.displayName,
+			image: imageUrl,
+		})
+		
+		
+		
 		setInput('');
 		setImageUrl('');
 	}
 	return (
 		<div className="MessageSender">
 			<div className="MessageSender__top">
-				<Avatar src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" />
+				<Avatar src ={ user.photoURL}/>
 				<form>
-					<input value={input} 
+					<input 
+					value={input} 
 					onChange={(e)=> setInput(e.target.value)} 
-					className="MessageSender__input" placeholder={"오늘은 어떠신가요?"} />
-					<input value={imageUrl}
+					className="MessageSender__input" placeholder={`오늘은 어떠신가요? ${user.displayName}님`} />
+					<input 
+					value={imageUrl}
 					onChange={(e)=> setImageUrl(e.target.value)} 
 					placeholder="image URL (옵션)" />
 					<button onClick={ handleSubmit } type="submit">
@@ -35,7 +50,7 @@ function MessageSender() {
 			<div className="MessageSender__bottom">
 				<div className="MessageSender__option">
 				<VideocamIcon style={{color: "red"}} />
-				<h3>실시간 비디오</h3>
+				<h3>Live</h3>
 				</div>
 				<div className="MessageSender__option">
 				<PhotoLibraryIcon style={{color: "green"}} />

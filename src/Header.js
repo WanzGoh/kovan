@@ -11,11 +11,12 @@ import AddIcon from '@material-ui/icons/Add'
 import ForumIcon from '@material-ui/icons/Forum'
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import { useStateValue } from "./StateProvider";
+import { useStateValue } from "./StateProvider";
 import ImageLogo from "./image/kovan.png";
+
 function Header() {
 
-	// const[ { user }, dispatch] = useStateValue();
+	const [{ user }, dispatch] = useStateValue();
 
 	return (
 		<div>
@@ -34,36 +35,30 @@ function Header() {
 						</div>
 					</div>
 					<div className="Header__option">
-						<div className="Header__option--active">
+			
 							<FlagIcon fontSize="large" />
 						</div>
 						
-					</div>
+	
 					<div className="Header__option">
-					<div className="Header__option--active">
 						<SubscriptionsOutlinedIcon fontSize="large" />
 						</div>
 						
-					</div>
 					<div className="Header__option">
-					<div className="Header__option--active">
 						<StorefrontOutlinedIcon fontSize="large" />
 						</div>
 						
-					</div>
 					<div className="Header__option">
-					<div className="Header__option--active">
 					<SupervisedUserCircleIcon fontSize="large"/>
 					</div>
 						
-					</div>
 				</div>
 				<div className="Header__right">
 					<div className="Header__info">
 						{/* <Avatar src={user.photoURL}/> */}
-						<Avatar src=''/>
+						<Avatar src={user.photoURL}/>
 						<h4>
-							연습
+							{user.displayName}
 						</h4>
 					</div>
 					<IconButton>
